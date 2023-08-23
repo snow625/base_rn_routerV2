@@ -1,3 +1,5 @@
+const path = require(`path`);
+
 module.exports = function (api) {
   api.cache(true);
   return {
@@ -22,12 +24,14 @@ module.exports = function (api) {
           ],
           root: ["."],
           alias: {
-            "@components": "./shared/components",
-            "@hooks": "./shared/hooks",
-            "@utils": "./shared/utils",
-            "@decorators": "./shared/decorators",
-            "@api": "./services/API",
-            "@providers": "./providers",
+            "@components": "./src/shared/components",
+            "@hooks": "./src/shared/hooks",
+            "@utils": "./src/shared/utils",
+            "@decorators": "./src/shared/decorators",
+            "@api": "./src/services/API",
+            "@providers": "./src/providers",
+            "@redux": "./src/redux",
+            "@assets": "./src/assets",
           },
         },
       ],

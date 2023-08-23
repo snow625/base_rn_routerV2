@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 import React from "react";
 
-import { signUser } from "../../redux/auth/authReducer";
+import { signUser } from "@redux/auth/authReducer";
 import { useDispatch } from "react-redux";
 import { Link } from "expo-router";
 
@@ -18,7 +18,12 @@ export default function Login() {
         }}
       />
 
-<Link href='/(auth)/registration'>To Registration</Link>
+      <Link style={{ fontFamily: "mainBold", fontSize: 20 }} href="/(auth)/registration">
+        To Registration
+      </Link>
+      <Link style={{ fontSize: 20 }} href="/(auth)/registration">
+        To Registration
+      </Link>
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button as RNButton } from "react-native";
+import { StyleSheet, Button as RNButton } from "react-native";
 import React from "react";
 
 const Button = (props) => {
