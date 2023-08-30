@@ -1,19 +1,16 @@
 import {
-  StyleSheet,
   Text,
   View,
-  Keyboard,
-  TouchableWithoutFeedback,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   SafeAreaView,
   StatusBar,
 } from "react-native";
-import { Button, TextField } from "@components";
+import { Button, TextField, StartedLoader } from "@components";
 
 import { useSelector } from "react-redux";
-import { getUserToken, getAuthStore } from "@redux/auth/authSelector";
+import { getAuthStore } from "@redux/auth/authSelector";
 
 import { userLogin, getUser } from "@redux/auth/authOperations";
 
@@ -33,18 +30,12 @@ const index = () => {
   const dispatch = useDispatch();
   const [state, setState] = useState(initState);
 
-  const token = useSelector(getUserToken);
-
-  const { loading, error } = useSelector(getAuthStore);
+  const { loading, token } = useSelector(getAuthStore);
 
   const onLogin = useCallback(
     (loginForm) => {
-      // console.log(loginForm);
-
-      // setState(initState);
-      // Keyboard.dismiss();
-      // isAuth: true, user: payload.user, token: payload.token
-      dispatch(userLogin(loginForm));
+      const { email, password } = loginForm;
+      dispatch(userLogin({ email: email.trim(), password }));
     },
     [dispatch]
   );
@@ -66,19 +57,8 @@ const index = () => {
 
   return (
     <>
-      {loading && (
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "red",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Text>Loading...</Text>
-        </View>
-      )}
-      {!loading && !token && (
+      {loading && token && <StartedLoader />}
+      {!token && (
         <SafeAreaView style={{ flex: 1, paddingTop: StatusBar.currentHeight }}>
           <KeyboardAvoidingView
             enabled
@@ -183,7 +163,7 @@ const index = () => {
                       }}
                       href="/(auth)/register"
                     >
-                      To Register
+                      {`${`To Register => `}`}
                     </Link>
                   </View>
                 </View>

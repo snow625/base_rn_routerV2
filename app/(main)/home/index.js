@@ -1,5 +1,4 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
 import { useDispatch } from "react-redux";
 import { userLogOut } from "@redux/auth/authOperations";
 import { Button } from "@components";

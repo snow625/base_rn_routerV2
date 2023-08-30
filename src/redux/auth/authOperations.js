@@ -1,13 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import api from "../../shared/api/index";
 import { auth } from "@api";
+import { makeAlert } from "@utils";
+
+const prepareError = (error) => {
+  const { message } = error.response.data;
+  makeAlert(message);
+  return message;
+};
 
 export const userRegister = createAsyncThunk("auth/register", async (data, { rejectWithValue }) => {
   try {
     return await auth.register(data);
   } catch (error) {
-    console.log(error);
-    return rejectWithValue(error.message);
+    return rejectWithValue(prepareError(error));
   }
 });
 
@@ -15,7 +21,7 @@ export const userLogin = createAsyncThunk("auth/login", async (data, { rejectWit
   try {
     return await auth.login(data);
   } catch (error) {
-    return rejectWithValue(error.message);
+    return rejectWithValue(prepareError(error));
   }
 });
 
@@ -24,7 +30,7 @@ export const userLogOut = createAsyncThunk("auth/logOut", async (_, { rejectWith
     await auth.logout();
     return;
   } catch (error) {
-    return rejectWithValue(error.message);
+    return rejectWithValue(prepareError(error));
   }
 });
 
@@ -36,7 +42,7 @@ export const getUser = createAsyncThunk(
       const { token } = store.auth;
       return await auth.getCurrent(token);
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(prepareError(error));
     }
   },
   {
