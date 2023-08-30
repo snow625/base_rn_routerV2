@@ -1,12 +1,22 @@
-import { StyleSheet, Button as RNButton } from "react-native";
-import React from "react";
+import { StyleSheet } from "react-native";
+import { Button } from "react-native-paper";
 
-const Button = (props) => {
-  const { onPress, text } = props;
+const MyButton = (props) => {
+  const { onPress, text, mode, ...buttonProps } = props;
 
-  return <RNButton title={text} onPress={onPress} />;
+  return (
+    <Button mode={mode} onPress={onPress} {...buttonProps}>
+      {text}
+    </Button>
+  );
+};
+MyButton.defaultProps = {
+  text: "NO TEXT",
+  onPress: () => {},
+  mode: "contained",
 };
 
-export default Button;
+
+export default MyButton;
 
 const styles = StyleSheet.create({});
