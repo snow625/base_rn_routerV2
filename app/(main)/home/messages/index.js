@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { headerOptions } from "@styles";
 import { Link } from "expo-router";
 const UsersRooms = () => {
   return (

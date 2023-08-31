@@ -32,6 +32,8 @@ module.exports = function (api) {
             "@providers": "./src/providers",
             "@redux": "./src/redux",
             "@assets": "./src/assets",
+            "@styles": "./src/shared/styles",
+            "@layouts": "./src/shared/layouts",
           },
         },
       ],

@@ -1,6 +1,7 @@
 import { Text, StyleSheet, StatusBar, Animated, Dimensions, View, Platform } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
+import { Ionicons } from "@expo/vector-icons";
 
 const StartedLoader = (props) => {
   // const {} = props;
@@ -23,16 +24,17 @@ const StartedLoader = (props) => {
   startImageRotateFunction();
 
   return (
-    <View style={s.container}>
-      <Animated.Image
+    <View style={s.containerPosition}>
+      <Animated.View
         style={{
           opacity: 1,
-          width: 100,
-          height: 100,
+          width: 110,
+          height: 110,
           transform: [{ rotate: RotateData }],
         }}
-        source={require("@assets/loaders/logo.png")}
-      />
+      >
+        <Ionicons name="md-logo-react" size={90} color="white" />
+      </Animated.View>
     </View>
   );
 };
@@ -42,10 +44,18 @@ StartedLoader.defaultProps = {};
 export default StartedLoader;
 
 const s = StyleSheet.create({
-  container: {
-    flex: 1,
+  // container: {
+  //   flex: 1,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   backgroundColor: "white",
+  // },
+  containerPosition: {
+    position: "absolute",
+    width: windowWidth,
+    height: windowHeight,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "#556278",
   },
 });
