@@ -1,5 +1,5 @@
 const path = require(`path`);
-
+// eas update
 module.exports = function (api) {
   api.cache(true);
   return {
