@@ -34,6 +34,7 @@ module.exports = function (api) {
             "@assets": "./src/assets",
             "@styles": "./src/shared/styles",
             "@layouts": "./src/shared/layouts",
+            "@lang": "./src/lang",
           },
         },
       ],

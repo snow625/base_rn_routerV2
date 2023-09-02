@@ -6,6 +6,7 @@ const { pending, rejected } = pendingRejected;
 
 const initialState = {
   user: {},
+  userLang: "en",
   token: "",
   isAuth: false,
   loading: false,

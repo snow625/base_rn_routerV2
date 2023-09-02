@@ -4,6 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import ProtectedRoute from "./protectedRoute";
 import FontProvider from "./fontProvider";
 import { AlertNotificationRoot } from "react-native-alert-notification";
+import "@lang";
 
 export default function RootProvider(props) {
   return (

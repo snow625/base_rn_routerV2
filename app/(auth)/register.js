@@ -6,6 +6,7 @@ import { userRegister } from "@redux/auth/authOperations";
 import { Text } from "react-native";
 import { Button, TextField } from "@components";
 import { FormLayoutAuth } from "@layouts";
+import { useTranslation } from "react-i18next";
 
 const initState = {
   email: "",
@@ -16,6 +17,7 @@ const initState = {
 const Register = () => {
   const dispatch = useDispatch();
   const [state, setState] = useState(initState);
+  const { t } = useTranslation();
 
   const onRegister = useCallback(
     (registerForm) => {
@@ -50,7 +52,7 @@ const Register = () => {
           marginBottom: 20,
         }}
       >
-        Register
+        {t("Auth.Register.screenTitle")}
       </Text>
 
       <TextField
@@ -59,7 +61,7 @@ const Register = () => {
         error={false}
         mode="flat"
         stateName="email"
-        label="Email"
+        label={t("Auth.Register.email_input_label")}
         onChange={handleChange}
       />
       <TextField
@@ -68,7 +70,7 @@ const Register = () => {
         mode="flat"
         secureTextEntry
         stateName="password"
-        label="Password"
+        label={t("Auth.Register.password_input_label")}
         onChange={handleChange}
       />
       <TextField
@@ -77,7 +79,7 @@ const Register = () => {
         mode="flat"
         secureTextEntry
         stateName="confirmPassword"
-        label="Password confirm"
+        label={t("Auth.Register.password_confirm_input_label")}
         onChange={handleChange}
       />
 

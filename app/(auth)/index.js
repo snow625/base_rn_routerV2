@@ -6,14 +6,12 @@ import { userLogin, getUser } from "@redux/auth/authOperations";
 import { Button, TextField, StartedLoader } from "@components";
 import { FormLayoutAuth } from "@layouts";
 
-const initState = {
-  email: "",
-  password: "",
-};
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [state, setState] = useState(initState);
+  const { t } = useTranslation();
+  const [state, setState] = useState({ email: "", password: "" });
 
   useEffect(() => {
     dispatch(getUser());
@@ -49,7 +47,7 @@ const Login = () => {
             error={false}
             mode="flat"
             stateName="email"
-            label="Email"
+            label={t("Auth.Login.email_input_label")}
             onChange={handleChange}
           />
           <TextField
@@ -58,7 +56,7 @@ const Login = () => {
             mode="flat"
             secureTextEntry
             stateName="password"
-            label="Password"
+            label={t("Auth.Login.password_input_label")}
             onChange={handleChange}
           />
 
@@ -74,7 +72,7 @@ const Login = () => {
               marginTop: 20,
               zIndex: 10,
             }}
-            text={loading ? `Loading` : "Login"}
+            text={t("Auth.Login.button_text")}
             onPress={() => onLogin(state)}
             labelStyle={{ fontSize: 18, padding: 3, paddingHorizontal: 55 }}
           />
